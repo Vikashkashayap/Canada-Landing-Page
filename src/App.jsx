@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Hero from './component/Hero';
+import FlowChart from './component/FlowChart';
+import RegistrationPopUp from './component/RegistrationPopUp';
 
 import { 
   GraduationCap, 
@@ -60,6 +62,7 @@ const App = () => {
   const [isComparisonOpen, setIsComparisonOpen] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [showFormPage, setShowFormPage] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -578,96 +581,7 @@ const App = () => {
       </section>
 
       {/* Process Flowchart Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12 lg:mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Your Journey to Success
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-              Follow our comprehensive 12-step process from initial consultation to career success
-            </p>
-          </motion.div>
-
-          <div className="relative">
-            {/* Connection Lines */}
-            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-200 via-green-200 to-emerald-200 transform -translate-y-1/2 z-0"></div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6 xl:gap-8">
-              {processSteps.map((step, index) => (
-                <motion.div
-                  key={step.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="relative"
-                >
-                  {/* Step Number */}
-                  <div className="absolute -top-2 -left-2 sm:-top-3 sm:-left-3 w-6 h-6 sm:w-8 sm:h-8 bg-white border-2 border-blue-600 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold text-blue-600 z-10">
-                    {step.id}
-                  </div>
-                  
-                  {/* Step Card */}
-                  <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 relative z-20">
-                    {/* Icon */}
-                    <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white mb-3 sm:mb-4 mx-auto`}>
-                      {step.icon}
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="text-center">
-                      <h3 className="text-sm sm:text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
-                      <p className="text-gray-600 text-xs sm:text-sm mb-3 leading-relaxed">{step.description}</p>
-                      <div className="inline-flex items-center px-2 sm:px-3 py-1 bg-gray-100 rounded-full text-xs font-medium text-gray-700">
-                        <Calendar className="w-2 h-2 sm:w-3 sm:h-3 mr-1" />
-                        {step.duration}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Arrow for mobile */}
-                  {index < processSteps.length - 1 && (
-                    <div className="lg:hidden flex justify-center mt-3 sm:mt-4">
-                      <ArrowRight className="w-4 h-4 sm:w-6 sm:h-6 text-gray-400" />
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-            
-            {/* Progress Indicator */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              viewport={{ once: true }}
-              className="mt-8 sm:mt-12 text-center"
-            >
-              <div className="inline-flex items-center space-x-2 sm:space-x-4 bg-gradient-to-r from-blue-50 to-green-50 rounded-full px-4 sm:px-8 py-3 sm:py-4 border border-blue-200">
-                <div className="flex items-center space-x-1 sm:space-x-2">
-                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-blue-600 rounded-full"></div>
-                  <span className="text-xs sm:text-sm font-medium text-gray-700">Start</span>
-                </div>
-                <div className="flex items-center space-x-1 sm:space-x-2">
-                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-600 rounded-full"></div>
-                  <span className="text-xs sm:text-sm font-medium text-gray-700">Middle</span>
-                </div>
-                <div className="flex items-center space-x-1 sm:space-x-2">
-                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-emerald-600 rounded-full"></div>
-                  <span className="text-xs sm:text-sm font-medium text-gray-700">Success</span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+     <FlowChart />
 
       {/* Top Universities Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-white">
@@ -1006,6 +920,9 @@ const App = () => {
           </motion.button>
         )}
       </AnimatePresence>
+
+      {/* Registration Popup */}
+      <RegistrationPopUp />
 
       {/* Enhanced Footer */}
       <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-12 sm:py-16">
