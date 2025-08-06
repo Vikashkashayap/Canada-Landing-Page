@@ -41,13 +41,13 @@ const Hero = ({ stats, handleFormSubmit, isFormSubmitted }) => {
         <div className="absolute inset-0 bg-black/50 z-10"></div>
 
         <div className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center min-h-[80vh] py-8 lg:py-0">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-8 items-center min-h-[80vh] py-8 lg:py-0">
             {/* Left Side - Content */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-white space-y-4 lg:space-y-6 order-2 lg:order-1"
+              className="text-white space-y-4 lg:space-y-6 order-1 w-full"
             >
               <div className="space-y-3 lg:space-y-4">
                 <motion.div
@@ -166,8 +166,14 @@ const Hero = ({ stats, handleFormSubmit, isFormSubmitted }) => {
             </motion.div>
 
             {/* Right Side - Form */}
-
-            <RegistrationForm />
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="order-2 lg:order-2 w-full"
+            >
+              <RegistrationForm />
+            </motion.div>
           </div>
         </div>
       </section>

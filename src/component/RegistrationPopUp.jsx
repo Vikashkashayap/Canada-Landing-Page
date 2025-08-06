@@ -11,10 +11,10 @@ const RegistrationPopUp = () => {
     const handleScroll = () => {
       if (!hasScrolled) {
         setHasScrolled(true);
-        // Show popup 2 seconds after first scroll
+        // Show popup 8 seconds after first scroll
         setTimeout(() => {
           setIsVisible(true);
-        }, 2000);
+        }, 8000);
       }
     };
 
