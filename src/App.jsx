@@ -34,12 +34,7 @@ import {
   CreditCard,
   Clipboard,
   GraduationCap as GraduationCapIcon,
-  Play,
-  Pause,
-  Volume2,
-  VolumeX,
-  Maximize2,
-  Minimize2
+  
 } from 'lucide-react';
 import backgroundImage from './assets/image.png';
 import FormPage from './FormPage';
